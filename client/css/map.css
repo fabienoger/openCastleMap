@@ -24,3 +24,7 @@ div.info {
   top: 300px;
   right: 30px;
 }
+
+div.leaflet-popup-content-wrapper {
+  border-radius: 0px;
+}
