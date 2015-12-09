@@ -1,0 +1,13 @@
+main {
+  width: 100%;
+  transition: 0.5s;
+}
+
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+header nav {
+  padding: 0px 15px;
+}

@@ -1,0 +1,26 @@
+div.map {
+  height: 600px;
+  min-height: 100%;
+  z-index: 4;
+}
+
+div.settings, div.info {
+  position: absolute;
+  right: -260px;
+  top: 80px;
+  z-index: 5;
+  width: 250px;
+  height: 200px;
+  background-color: #FFF;
+  padding: 0 15px;
+}
+
+div.close-settings {
+  padding: 10px;
+  cursor: pointer;
+}
+
+div.info {
+  top: 300px;
+  right: 30px;
+}
