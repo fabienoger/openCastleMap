@@ -8,6 +8,7 @@ This projects using MeteorJS, Materializecss and Leaflet.
 
 ## Packages
 
-materialize:materialize
-iron:router
-bevanhunt:leaflet
+* materialize:materialize
++ iron:router
+- bevanhunt:leaflet
++ ejson
