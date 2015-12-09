@@ -1,4 +1,4 @@
-# openCastleMap
+# Open Castle Map
 
 Map that lists the castles in France.
 
