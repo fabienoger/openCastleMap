@@ -29,7 +29,7 @@ if (Meteor.isClient) {
       }).addTo(map);
 
       // Geolocation
-      map.locate({setView: true, maxZoom: 16});
+      map.locate({maxZoom: 16});
       function onLocationFound(e) {
         var radius = e.accuracy / 2;
 
