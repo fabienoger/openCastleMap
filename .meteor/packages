@@ -20,5 +20,7 @@ autopublish             # Publish all data to the clients (for prototyping)
 insecure                # Allow all DB writes from clients (for prototyping)
 iron:router
 materialize:materialize
-bevanhunt:leaflet
 ejson
+bevanhunt:leaflet@0.3.14
+herrhelms:meteor-leaflet-markercluster@0.0.2
+foger:leaflet-1

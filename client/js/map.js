@@ -32,11 +32,15 @@ if (Meteor.isClient) {
       map.on('mousemove', function(e) {
           document.getElementById('map-info-c').innerHTML = e.latlng;
       });
+
       // Refresh ZoomLevel
       map.on("zoomend", function(){
         zoomLev = map.getZoom();
         document.getElementById('map-info-z').innerHTML = zoomLev;
       });
+
+      // Initialize markerCluster
+      var markerCluster = new L.markerClusterGroup({ chunkedLoading: true });
 
       // Get castles from Database
       var tempCastles = Castles.find().fetch();
@@ -75,18 +79,24 @@ if (Meteor.isClient) {
         // Initialize Popup content
         var popupContent = "";
 
-        // Add markers to map
-        var marker = L.marker(coordinates, {icon: castleIcon}).addTo(map);
+        // Initialize marker
+        var marker = L.marker(coordinates, {icon: castleIcon});
 
+        // Castle Name
+        if (castle.properties.nom != null)
+          popupContent += "<h5 class='center-align'>" + castle.properties.nom + "</h5>";
         // Check if wiki isn't empty
         var wiki = castle.properties.wiki;
+        var wikiLink = "";
         if (wiki != null) {
           wiki = wiki.split(":");
-          popupContent += "<h5 class='align-center'>" + wiki[1] + "</h5>";
+          var wikiName = wiki[1].replace(/ /g, "_");
+          wikiLink = "https://" + wiki[0] + ".wikipedia.org/wiki/" + wikiName;
+          popupContent += "<div class='valign-wrapper'><i class='material-icons'>language</i><a class='valign right-align' target='_blank' href=" + wikiLink + ">" + wiki[1] + "</a></div>";
         }
 
         // Check if adress isn't empty
-        if (castle.properties.adresse != "") {
+        if (castle.properties.adresse != null) {
           popupContent += "<div class='valign-wrapper'><p class='valign'><i class='material-icons'>room</i>" + castle.properties.adresse + "</p></div>";
           console.log(castle.properties.adresse);
         }
@@ -126,7 +136,12 @@ if (Meteor.isClient) {
             palace.addLayer(marker);
             break;
         }
+
+        // Add marker to markerCluster
+        markerCluster.addLayer(marker);
       });
+       map.addLayer(markerCluster);
+
       // Add overlay to map
       L.control.layers(overlayMaps).addTo(map);
     }

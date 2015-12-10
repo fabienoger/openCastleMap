@@ -7,7 +7,7 @@ div.map {
 div.settings, div.info {
   position: absolute;
   right: -260px;
-  top: 80px;
+  top: 150px;
   z-index: 5;
   width: 250px;
   height: 200px;
@@ -21,10 +21,20 @@ div.close-settings {
 }
 
 div.info {
-  top: 300px;
+  top: 370px;
   right: 30px;
 }
 
 div.leaflet-popup-content-wrapper {
   border-radius: 0px;
+}
+
+div.leaflet-popup-content-wrapper h5 {
+  font-size: 1.3em;
+}
+
+div.leaflet-popup-content-wrapper div a.valign {
+  display: block;
+  margin-left: 15px;
+  font-size: 1.2em;
 }
