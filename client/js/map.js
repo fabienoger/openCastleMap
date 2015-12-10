@@ -28,6 +28,26 @@ if (Meteor.isClient) {
           attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
       }).addTo(map);
 
+      // Geolocation
+      map.locate({setView: true, maxZoom: 16});
+      function onLocationFound(e) {
+        var radius = e.accuracy / 2;
+
+        L.marker(e.latlng).addTo(map)
+            .bindPopup("You are within " + radius + " meters from this point").openPopup();
+
+        L.circle(e.latlng, radius).addTo(map);
+      }
+
+      map.on('locationfound', onLocationFound);
+
+      // Errors Geolocation
+      function onLocationError(e) {
+        alert(e.message);
+      }
+
+      map.on('locationerror', onLocationError);
+
       // Latitude Longitude of cursor
       zoomLev = map.getZoom();
       map.on('mousemove', function(e) {
