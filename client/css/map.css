@@ -33,8 +33,8 @@ div.leaflet-popup-content-wrapper h5 {
   font-size: 1.3em;
 }
 
-div.leaflet-popup-content-wrapper div a.valign {
+div.leaflet-popup-content-wrapper div a.valign, div.leaflet-popup-content-wrapper div p.valign {
   display: block;
-  margin-left: 15px;
   font-size: 1.2em;
+  margin: 15px 0 15px 15px;
 }

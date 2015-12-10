@@ -23,8 +23,8 @@ ecmascript@0.1.6
 ecmascript-runtime@0.2.6
 ejson@1.0.7
 es5-shim@4.1.14
+fabienoger:leaflet-1@0.0.1
 fastclick@1.0.7
-foger:leaflet-1@0.0.1
 geojson-utils@1.0.4
 herrhelms:meteor-leaflet-markercluster@0.0.2
 hot-code-push@1.0.0
