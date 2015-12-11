@@ -90,6 +90,7 @@ if (Meteor.isClient) {
         "Palace": palace,
       };
 
+
       // Browse castles
       tempCastles.forEach(function (castle) {
         // Get coordinates
@@ -163,12 +164,7 @@ if (Meteor.isClient) {
 //      map.removeLayer(markerCluster);
 
       // Add overlay to map
-      map.addControl(new L.control.layers({}, overlays));
-    //L.control.layers(overlays).addTo(map);
-      map.eachLayer(function (layer) {
-        // Get coordinates
-        console.log(layer);
-      });
+      map.addControl(new L.control.layers({}, overlays).setPosition('bottomleft'));
     }
 
     // Map events

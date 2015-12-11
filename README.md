@@ -6,6 +6,11 @@ Map that lists the castles in France.
 
 This projects using MeteorJS, Materializecss and Leaflet.
 
+#Usage
+
+You just need to run the following command line :
+`meteor`
+
 ## Packages
 
 * materialize:materialize
