@@ -18,3 +18,4 @@ You just need to run the following command line :
 * bevanhunt:leaflet
 * ejson
 * herrhelms:meteor-leaflet-markercluster
+* fourseven:scss
