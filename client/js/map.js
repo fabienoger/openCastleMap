@@ -68,7 +68,7 @@ if (Meteor.isClient) {
 
       // Display castles count
       console.log(tempCastles.length);
-      document.getElementById("nbCastles").innerHTML = tempCastles.length;
+      document.getElementById("nbCastles").innerHTML = tempCastles.length + " / 4116";
 
       // Initialize Groups
       var defensive = L.layerGroup([]);
@@ -80,14 +80,14 @@ if (Meteor.isClient) {
       var palace = L.layerGroup([]);
 
       // Add groups to overlay
-      var overlayMaps = {
+      var overlays = {
         "Defensive": defensive,
         "Fortress": fortress,
         "Manor": manor,
         "Stately": stately,
         "Citadel": citadel,
         "Fortification": fortification,
-        "Palace": palace
+        "Palace": palace,
       };
 
       // Browse castles
@@ -159,10 +159,16 @@ if (Meteor.isClient) {
         // Add marker to markerCluster
         markerCluster.addLayer(marker);
       });
-       map.addLayer(markerCluster);
+      map.addLayer(markerCluster);
+//      map.removeLayer(markerCluster);
 
       // Add overlay to map
-      L.control.layers(overlayMaps).addTo(map);
+      map.addControl(new L.control.layers({}, overlays));
+    //L.control.layers(overlays).addTo(map);
+      map.eachLayer(function (layer) {
+        // Get coordinates
+        console.log(layer);
+      });
     }
 
     // Map events

@@ -43,3 +43,9 @@ div.leaflet-popup-content-wrapper div a.valign, div.leaflet-popup-content-wrappe
   font-size: 1.2em;
   margin: 15px 0 15px 15px;
 }
+
+input.leaflet-control-layers-selector {
+  position: inherit !important;
+  left: inherit !important;
+  visibility: visible !important;
+}
