@@ -1,5 +1,14 @@
 if (Meteor.isClient) {
   $(document).ready(function() {
+    Template.header.helpers({
+      'isMap': function() {
+        currentPath = Router.current().route.getName();
+        if (currentPath == "map")
+          return true
+        else
+          return false
+      }
+    });
     Template.header.rendered = function () {
       $(".button-collapse").sideNav();
       $("#mobile-menu li").click(function() {
