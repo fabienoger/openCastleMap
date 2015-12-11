@@ -9,6 +9,7 @@ This projects using MeteorJS, Materializecss and Leaflet.
 ## Packages
 
 * materialize:materialize
-+ iron:router
-- bevanhunt:leaflet
-+ ejson
+* iron:router
+* bevanhunt:leaflet
+* ejson
+* herrhelms:meteor-leaflet-markercluster
