@@ -28,6 +28,9 @@ if (Meteor.isClient) {
           attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
       }).addTo(map);
 
+      // Map size
+      $("#map").height($(window).height() - 64);
+
       // Geolocation
       map.locate({maxZoom: 16});
       function onLocationFound(e) {
@@ -175,6 +178,9 @@ if (Meteor.isClient) {
         else
         $("#settings").animate({right: "30px"});
       }
+    });
+    $(window).resize(function() {
+      $("#map").height($(window).height() - 64);
     });
   });
 }
