@@ -173,10 +173,10 @@ if (Meteor.isClient) {
     // Map events
     Template.map.events({
       'click #close-settings': function() {
-        if ($("#settings").css("right") == "30px")
+        if ($("#settings").css("right") == "15px")
           $("#settings").animate({right: "-260px"});
         else
-        $("#settings").animate({right: "30px"});
+        $("#settings").animate({right: "15px"});
       }
     });
     $(window).resize(function() {
