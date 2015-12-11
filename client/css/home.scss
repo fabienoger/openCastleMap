@@ -1,0 +1,47 @@
+@import "{}/client/css/config.scss";
+
+div.row.home {
+  margin: 0 15px;
+  div.col {
+    a.dashboard-item {
+      display: block;
+      height: 100%;
+      width: 100%;
+      background-color: $p-color;
+      color: #FFF;
+
+      h3 {
+        padding-top: 50px;
+      }
+
+      div.container-icon {
+        position: relative;
+        background-color: $p-color;
+
+        div.sub-container {
+          transition: 1s;
+          border-radius: 50%;
+          width: 90px;
+          height: 90px;
+          position: absolute;
+          bottom: -40px;
+          right: 0;
+          left: 0;
+          margin-right: auto;
+          margin-left: auto;
+          background-color: #fff;
+          color: $p-color;
+        }
+      }
+    }
+
+    a.dashboard-item:hover {
+      div.container-icon {
+        div.sub-container {
+          color: #FFF;
+          background-color: $p-color;
+        }
+      }
+    }
+  }
+}
