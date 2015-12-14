@@ -177,7 +177,7 @@ if (Meteor.isClient) {
 //      map.removeLayer(markerCluster);
 
       // Add overlay to map
-      map.addControl(new L.control.layers({}, overlays).setPosition('bottomleft'));
+      map.addControl(new L.control.layers({}, overlays));
     }
 
     // Map events
