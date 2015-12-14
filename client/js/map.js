@@ -168,8 +168,10 @@ if (Meteor.isClient) {
         });
         // Display castles count
         document.getElementById("nbCastles").innerHTML = i + " / 4116";
-        if (i == 4116)
+        if (i == 4116) {
+          $("#container-preloader").fadeOut();
           $("#preloader").removeClass("active");
+        }
       });
       map.addLayer(markerCluster);
 //      map.removeLayer(markerCluster);
