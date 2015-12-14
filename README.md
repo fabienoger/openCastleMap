@@ -19,3 +19,4 @@ You just need to run the following command line :
 * ejson
 * herrhelms:meteor-leaflet-markercluster
 * fourseven:scss
+* mdg:geolocation
