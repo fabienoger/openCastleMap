@@ -1,5 +1,15 @@
 @import "{}/client/css/config.scss";
 
+div.preloader-wrapper.big {
+  position: absolute;
+  z-index: 30;
+  left: 47%;
+  top: 47%;
+  div.spinner-green, .spinner-green-only {
+    border-color: $p-color !important;
+  }
+}
+
 div.map {
   height: 600px;
   min-height: 100%;

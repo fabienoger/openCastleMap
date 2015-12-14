@@ -69,10 +69,6 @@ if (Meteor.isClient) {
       // Get castles from Database
       var tempCastles = Castles.find().fetch();
 
-      // Display castles count
-      console.log(tempCastles.length);
-      document.getElementById("nbCastles").innerHTML = tempCastles.length + " / 4116";
-
       // Initialize Groups
       var defensive = L.layerGroup([]);
       var fortress = L.layerGroup([]);
@@ -95,73 +91,85 @@ if (Meteor.isClient) {
 
 
       // Browse castles
-      tempCastles.forEach(function (castle) {
-        // Get coordinates
-        var coordinates = [];
-        coordinates.push(castle.geometry.coordinates[1]);
-        coordinates.push(castle.geometry.coordinates[0]);
+//      tempCastles.forEach(function (castle) { ### OLD
+      $.getJSON( "castles.json", function( data ) {
+        var i = 0;
+        data.features.forEach(function(castle) {
+          console.log(castle);
+          i++;
+          // Get coordinates
+          var coordinates = [];
+          coordinates.push(castle.geometry.coordinates[1]);
+          coordinates.push(castle.geometry.coordinates[0]);
 
-        // Initialize Popup content
-        var popupContent = "";
+          // Initialize Popup content
+          var popupContent = "";
 
-        // Initialize marker
-        var marker = L.marker(coordinates, {icon: castleIcon});
+          // Initialize marker
+          var marker = L.marker(coordinates, {icon: castleIcon});
 
-        // Castle Name
-        if (castle.properties.nom != null)
-          popupContent += "<h5 class='center-align'>" + castle.properties.nom + "</h5>";
-        // Add wiki to popup
-        var wiki = castle.properties.wiki;
-        var wikiLink = "";
-        var wikiName = null;
-        if (wiki != null) {
-          wiki = wiki.split(":");
-          wikiName = wiki[1].replace(/ /g, "_");
-          wikiLink = "https://" + wiki[0] + ".wikipedia.org/wiki/" + wikiName;
-          wikiName = wiki[1];
-        }
-        popupContent += "<div class='valign-wrapper'><i class='material-icons'>language</i><a class='valign right-align' target='_blank' href=" + wikiLink + ">" + wikiName + "</a></div>";
+          // Castle Name
+          if (castle.properties.nom != null)
+            popupContent += "<h5 class='center-align'>" + castle.properties.nom + "</h5>";
+          // Add wiki to popup
+          var wiki = castle.properties.wiki;
+          var wikiLink = "";
+          var wikiName = null;
+          if (wiki != null) {
+            wiki = wiki.split(":");
+            wikiName = wiki[1].replace(/ /g, "_");
+            wikiLink = "https://" + wiki[0] + ".wikipedia.org/wiki/" + wikiName;
+            wikiName = wiki[1];
+          }
+          popupContent += "<div class='valign-wrapper'><i class='material-icons'>language</i><a class='valign right-align' target='_blank' href=" + wikiLink + ">" + wikiName + "</a></div>";
 
-        // Add type to popup
-        popupContent += "<div class='valign-wrapper'><i class='material-icons'>class</i><p class='valign'>" + castle.properties.type + "</p></div>";
+          // Add type to popup
+          popupContent += "<div class='valign-wrapper'><i class='material-icons'>class</i><p class='valign'>" + castle.properties.type + "</p></div>";
 
-        // Add adress to popup
-        popupContent += "<div class='valign-wrapper'><i class='material-icons'>room</i><p class='valign'>" + castle.properties.adresse + "</p></div>";
+          // Add adress to popup
+          popupContent += "<div class='valign-wrapper'><i class='material-icons'>room</i><p class='valign'>" + castle.properties.adresse + "</p></div>";
 
-        // Add web site to popup
-        popupContent += "<div class='valign-wrapper'><i class='material-icons'>web</i><p class='valign'>" + castle.properties.web_site + "</p></div>";
+          // Add web site to popup
+          popupContent += "<div class='valign-wrapper'><i class='material-icons'>web</i><p class='valign'>" + castle.properties.web_site + "</p></div>";
 
-        // If popupContent isn't empty add popup to marker
-        if (popupContent != "")
-          marker.bindPopup(popupContent);
+          // If popupContent isn't empty add popup to marker
+          if (popupContent != "")
+            marker.bindPopup(popupContent);
 
-        // Add Layer to LayerGroup
-        switch (castle.properties.type) {
-          case "defensive":
-            defensive.addLayer(marker);
-            break;
-          case "fortress":
-            fortress.addLayer(marker);
-            break;
-          case "manor":
-            manor.addLayer(marker);
-            break;
-          case "stately":
-            stately.addLayer(marker);
-            break;
-          case "citadel":
-            citadel.addLayer(marker);
-            break;
-          case "fortification":
-            fortification.addLayer(marker);
-            break;
-          case "palace":
-            palace.addLayer(marker);
-            break;
-        }
+          // Add Layer to LayerGroup
+          switch (castle.properties.type) {
+            case "defensive":
+              defensive.addLayer(marker);
+              break;
+            case "fortress":
+              fortress.addLayer(marker);
+              break;
+            case "manor":
+              manor.addLayer(marker);
+              break;
+            case "stately":
+              stately.addLayer(marker);
+              break;
+            case "citadel":
+              citadel.addLayer(marker);
+              break;
+            case "fortification":
+              fortification.addLayer(marker);
+              break;
+            case "palace":
+              palace.addLayer(marker);
+              break;
+          }
 
-        // Add marker to markerCluster
-        markerCluster.addLayer(marker);
+          // Add marker to markerCluster
+          markerCluster.addLayer(marker);
+          console.log(i);
+
+        });
+        // Display castles count
+        document.getElementById("nbCastles").innerHTML = i + " / 4116";
+        if (i == 4116)
+          $("#preloader").removeClass("active");
       });
       map.addLayer(markerCluster);
 //      map.removeLayer(markerCluster);
