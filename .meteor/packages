@@ -21,8 +21,7 @@ insecure                # Allow all DB writes from clients (for prototyping)
 iron:router
 materialize:materialize
 ejson
-bevanhunt:leaflet@0.3.14
-herrhelms:meteor-leaflet-markercluster@0.0.2
-fabienoger:leaflet-1
 fourseven:scss
 mdg:geolocation
+herrhelms:meteor-leaflet-markercluster
+bevanhunt:leaflet@0.3.18

@@ -1,6 +1,8 @@
 if (Meteor.isClient) {
   $(document).ready(function() {
     Template.map.rendered = function() {
+      $("#map").height($(window).height() - 64);
+      console.log(L.version);
       // Initialize defaults values
       var defaultZoom = 6;
       var defaultCoordinate = [47, 2.48];
@@ -31,6 +33,12 @@ if (Meteor.isClient) {
       // Map size
       $("#map").height($(window).height() - 64);
 
+      // Initialize MiniMap
+/*      var miniMap = new L.Control.MiniMap(L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'), {
+        position: 'leftbottom'
+      });
+     miniMap.addTo(map);
+*/
       // Geolocation
       map.locate({maxZoom: 16});
       function onLocationFound(e) {
