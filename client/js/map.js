@@ -128,17 +128,29 @@ if (Meteor.isClient) {
             wikiName = wiki[1].replace(/ /g, "_");
             wikiLink = "https://" + wiki[0] + ".wikipedia.org/wiki/" + wikiName;
             wikiName = wiki[1];
+            popupContent += "<div class='valign-wrapper'><i class='material-icons'>language</i><a class='valign right-align' target='_blank' href=" + wikiLink + ">" + wikiName + "</a></div>";
           }
-          popupContent += "<div class='valign-wrapper'><i class='material-icons'>language</i><a class='valign right-align' target='_blank' href=" + wikiLink + ">" + wikiName + "</a></div>";
+          else {
+            popupContent += "<div class='valign-wrapper'><i class='material-icons'>language</i><a class='valign right-align' target='_blank' href='#'></a></div>";
+          }
 
           // Add type to popup
-          popupContent += "<div class='valign-wrapper'><i class='material-icons'>class</i><p class='valign'>" + castle.properties.type + "</p></div>";
+          if (castle.properties.type != null)
+            popupContent += "<div class='valign-wrapper'><i class='material-icons'>class</i><p class='valign'>" + castle.properties.type + "</p></div>";
+          else
+            popupContent += "<div class='valign-wrapper'><i class='material-icons'>class</i><p class='valign'></p></div>";
 
           // Add adress to popup
-          popupContent += "<div class='valign-wrapper'><i class='material-icons'>room</i><p class='valign'>" + castle.properties.adresse + "</p></div>";
+          if (castle.properties.adresse != null)
+            popupContent += "<div class='valign-wrapper'><i class='material-icons'>room</i><p class='valign'>" + castle.properties.adresse + "</p></div>";
+          else
+            popupContent += "<div class='valign-wrapper'><i class='material-icons'>room</i><p class='valign'></p></div>";
 
           // Add web site to popup
-          popupContent += "<div class='valign-wrapper'><i class='material-icons'>web</i><p class='valign'>" + castle.properties.web_site + "</p></div>";
+          if (castle.properties.web_site != null)
+            popupContent += "<div class='valign-wrapper'><i class='material-icons'>web</i><p class='valign'>" + castle.properties.web_site + "</p></div>";
+          else
+            popupContent += "<div class='valign-wrapper'><i class='material-icons'>web</i><p class='valign'></p></div>";
 
           // If popupContent isn't empty add popup to marker
           if (popupContent != "")
